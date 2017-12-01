@@ -3,6 +3,7 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $db10 = require __DIR__ . '/db10.php';
+$db11 = require __DIR__ . '/db11.php';
 
 $config = [
     'id' => 'basic',
@@ -53,7 +54,7 @@ $config = [
             ],
         ],
         'db' => $db,
-        'db10' => $db10,
+        'db10' => YII_ENV_DEV ? $db10 : $db11,
         'urlManager'=>require(__DIR__.'/_urlManager.php'),
         /*
         'urlManager' => [
