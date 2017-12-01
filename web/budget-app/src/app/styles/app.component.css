@@ -1,0 +1,64 @@
+@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:local('Material Icons'), local('MaterialIcons-Regular'), url(/budget-app/src/app/styles/icon/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');}
+@font-face{font-family:'raleway';src:url('/budget-app/src/app/styles/font/raleway/raleway-regular-webfont.eot');src:url('/budget-app/src/app/styles/font/raleway/raleway-regular-webfont.eot?#iefix') format('embedded-opentype'),
+url('/budget-app/src/app/styles/font/raleway/raleway-regular-webfont.woff2') format('woff2'),
+url('/budget-app/src/app/styles/font/raleway/raleway-regular-webfont.woff') format('woff'),
+url('/budget-app/src/app/styles/font/raleway/raleway-regular-webfont.ttf') format('truetype');font-weight:normal;}
+@font-face{font-family:'raleway';src:url('/budget-app/src/app/styles/font/raleway/raleway-regular-italic-webfont.eot');src:url('/budget-app/src/app/styles/font/raleway/raleway-regular-italic-webfont.eot?#iefix') format('embedded-opentype'),
+url('/budget-app/src/app/styles/font/raleway/raleway-regular-italic-webfont.woff2') format('woff2'),
+url('/budget-app/src/app/styles/font/raleway/raleway-regular-italic-webfont.woff') format('woff'),
+url('/budget-app/src/app/styles/font/raleway/raleway-regular-italic-webfont.ttf') format('truetype');font-weight:normal;font-style:italic;}
+@font-face{font-family:'raleway';src:url('/budget-app/src/app/styles/font/raleway/raleway-semibold-webfont.eot');src:url('/budget-app/src/app/styles/font/raleway/raleway-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+url('/budget-app/src/app/styles/font/raleway/raleway-semibold-webfont.woff2') format('woff2'),
+url('/budget-app/src/app/styles/font/raleway/raleway-semibold-webfont.woff') format('woff'),
+url('/budget-app/src/app/styles/font/raleway/raleway-semibold-webfont.ttf') format('truetype');font-weight:bold;}
+/*@import '/node_modules/@angular/material/prebuilt-themes/indigo-pink.css';*/
+html, body{height:100%;}
+html{font-family:'raleway', sans-serif;line-height:1.4;font-size:1em;}
+body{font-family:'raleway', sans-serif;margin:auto;font-size:110%;text-align:center;padding: 0 0;  background:rgb(249,249,249); max-width:100%;}
+.page-content{text-align: center;width:50%;margin:auto;}
+@media all and (max-width:1500px){.page-content{width:70%;}
+}
+@media all and (max-width:992px){.page-content{width:95%;}
+}
+
+.central-card{background-color:#fff;margin:auto;width:90%; color: rgba(0, 0, 0, 0.57);margin-top:10px;}
+
+.form-full-width{width:100%;padding:15px;}
+
+md-toolbar{
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    color:#fff;
+    display:inline-block;
+}
+.block_logout{height:100%;width:100%;text-align: right;}
+.menu_button{background:rgba(0,0,0,0);height:100%;}
+.logout_button{background:rgba(0,0,0,0);height:100%;}
+.bottom-stat {font-size:1.2em; padding:10px;}
+.all-stat {font-size:1.2em;}
+.green {color:green;}
+.red {color:red;}
+.site-error{display:none;}
+
+.messages-container{position:fixed;top:0;left:0;z-index:99;width:100%;display:block;}
+.success{background:rgba(0, 255, 102, 0.58);}
+.error{background:rgba(204, 0, 0, 0.58);}
+.messages-container span{color:#fff;font-weight:700;display:block; padding:30px 0;-webkit-transition: ease-out 1.5s;-moz-transition: ease-out 1.5s;-o-transition: ease-out 1.5s;transition: ease-out 1.5s;}
+.nodisplay{height:0;display:none !important;}
+.close_message{color:#fff;text-decoration:none;padding-left:5px;}
+.close_message:hover{color:#fff;text-decoration:none;}
+.stat-month-block{margin:20px 0; padding-bottom:10px; border-bottom: 1px dashed darkgrey;}
+.top_remove{
+    color:red;
+    font-size: 0.9em;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.nodisplay{height:0px;display:none !important;}
+.shadow{background-color:rgba(0, 0, 0, 0.6);position:fixed; top:0;left:0;z-index:59; width:100%;height:100%;}
+.dialog-card{display:block;background-color:#fff;width:30%;margin:auto;box-shadow: 0 5px 15px rgba(0, 0, 0, .5);margin-top:10px;}
+@media all and (max-width:992px){.dialog-card{width:70%;}
+}
+.dialog-card button {display:inline; width:40%; margin:0 10px;}
+.dialog_text {width:100%;min-height:100px;}
+.dialog_text:focus { border: 1px solid #009688;}

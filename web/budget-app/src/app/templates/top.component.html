@@ -1,0 +1,36 @@
+<md-card class="central-card container">
+    <md-card-header>
+        <md-card-title class="form-title"><h4>Последние записи</h4></md-card-title>
+    </md-card-header>
+    <md-card-content class="row">
+
+        <div *ngFor="let item of topdata; let i = index" class="col-xs-12 col-md-12 stat-month-block">
+            <p *ngIf="item.section=='debet'" class="green" style="font-size:1.2em;"><span>{{item.date}}</span>&nbsp;<span>{{item.typename}}</span>&nbsp;<span>+&nbsp;{{item.summa}}</span>&nbsp;<span>{{item.comment}}</span>&nbsp;<span>{{item.login}}</span><i title="Удалить запись" (click)="openDialog(item.id)" class="icon-remove top_remove ng-scope"></i></p>
+
+            <p *ngIf="item.section=='credit'" class="red" style="font-size:1.2em;"><span>{{item.date}}</span>&nbsp;<span>{{item.typename}}</span>&nbsp;<span>-&nbsp;{{item.summa}}</span>&nbsp;<span>{{item.comment}}</span>&nbsp;<span>{{item.login}}</span><i title="Удалить запись" (click)="openDialog(item.id)" class="icon-remove top_remove ng-scope"></i></p>
+
+
+        </div>
+
+
+
+    </md-card-content>
+</md-card>
+
+<div id="dialog" class="nodisplay">
+    <md-card class="dialog-card">
+        <md-card-title class="form-title">Удалить?</md-card-title>
+
+        <md-card-content>
+            <form>
+
+                <button class="button-pay submit_feed" md-raised-button color="warn" (click)="Remove()">Удалить</button><button class="button-pay" md-raised-button (click)="closeDialog()">Отмена</button>
+            </form>
+        </md-card-content>
+
+    </md-card>
+</div>
+
+<div id="messages" class="messages-container">
+    <span *ngFor="let itemmessage of messagesService.messages.message; let i = index" id="message_{{i}}" class="{{messagesService.messages.type[i]}}">{{itemmessage}}<a *ngIf="itemmessage" href="javascript:void(0);" class="icon-remove close_message" (click)="messagesService.closeMessage(i)"></a></span>
+</div>

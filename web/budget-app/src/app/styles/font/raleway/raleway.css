@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'raleway';
+	src: url('raleway-regular-webfont.eot');
+	src: url('raleway-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	url('raleway-regular-webfont.woff2') format('woff2'),
+	url('raleway-regular-webfont.woff') format('woff'),
+	url('raleway-regular-webfont.ttf') format('truetype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'raleway';
+	src: url('raleway-regular-italic-webfont.eot');
+	src: url('raleway-regular-italic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('raleway-regular-italic-webfont.woff2') format('woff2'),
+	url('raleway-regular-italic-webfont.woff') format('woff'),
+	url('raleway-regular-italic-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'raleway';
+	src: url('raleway-semibold-webfont.eot');
+	src: url('raleway-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+	url('raleway-semibold-webfont.woff2') format('woff2'),
+	url('raleway-semibold-webfont.woff') format('woff'),
+	url('raleway-semibold-webfont.ttf') format('truetype');
+	font-weight: bold;
+}

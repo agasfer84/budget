@@ -1,0 +1,89 @@
+<md-card class="central-card container">
+    <md-card-header>
+        <md-card-title class="form-title"><h4>Месячная статистика с разбивкой</h4></md-card-title>
+    </md-card-header>
+
+    <md-card-content>
+
+        <div class="row">
+
+            <mat-accordion>
+
+            <div *ngFor="let statitem of stat.monthstatarr; let i = index" class="col-xs-12 col-md-12">
+                <div *ngIf="i==0 || showall" class="stat-month-block">
+                <h4>{{statitem.date}}</h4>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                           Постатейная разбивка
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{statitem.date}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                <p *ngFor="let iteminfo of statitem.debet" class="all-stat green">{{ iteminfo.typename }}:&nbsp;+&nbsp;{{ iteminfo.sum }}</p>
+                <p *ngFor="let iteminfo of statitem.credit" class="all-stat red">{{ iteminfo.typename }}:&nbsp;-&nbsp;{{ iteminfo.sum }}</p>
+                </mat-expansion-panel>
+
+                    <h5>Итого за {{statitem.date}}</h5>
+                    <span class="green">Приход: +&nbsp;{{statitem.itogo.monthdebet}}</span>
+                    <span class="red">Расход: -&nbsp;{{statitem.itogo.monthcredit}}</span>
+                    <span class="{{validationService.getColorClass(statitem.itogo.monthsaldo)}}">Сальдо: {{validationService.getSign(statitem.itogo.monthsaldo)}}&nbsp;{{statitem.itogo.monthsaldo}}</span>
+
+                </div>
+
+                <button *ngIf="i==0&&!showall" class="button-pay" md-raised-button  (click)="showAllPeriods()">Показать все периоды</button>
+                <button *ngIf="i==0&&showall" class="button-pay" md-raised-button  (click)="showAllPeriods()">Скрыть периоды</button>
+
+            </div>
+
+            </mat-accordion>
+
+
+        </div>
+
+
+    </md-card-content>
+
+
+</md-card>
+
+<md-card class="central-card container">
+    <div  *ngFor="let allstatitem of stat.allstatarr">
+    <md-card-header>
+        <md-card-title class="form-title"><h4>Итоговая статистика за {{allstatitem.firstperiod}} - {{allstatitem.lastperiod}}</h4></md-card-title>
+    </md-card-header>
+
+    <md-card-content>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Постатейная разбивка
+                    </mat-panel-title>
+                    <mat-panel-description>
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p *ngFor="let alliteminfo of allstatitem.debet" class="all-stat green">{{ alliteminfo.typename }}:&nbsp;+&nbsp;{{ alliteminfo.sum }} ({{(alliteminfo.sum*100/alliteminfo.total_sum).toFixed(2)}}%)</p>
+                <p *ngFor="let alliteminfo of allstatitem.credit" class="all-stat red">{{ alliteminfo.typename }}:&nbsp;-&nbsp;{{ alliteminfo.sum }} ({{(alliteminfo.sum*100/alliteminfo.total_sum).toFixed(2)}}%)</p>
+            </mat-expansion-panel>
+            <p style="margin-top:20px;">
+            <span class="green">Приход: +&nbsp;{{allstatitem.itogo.alldebet}}</span>
+            <span class="red">Расход: -&nbsp;{{allstatitem.itogo.allcredit}}</span>
+            <span class="{{validationService.getColorClass(allstatitem.itogo.allsaldo)}}">Сальдо: {{validationService.getSign(allstatitem.itogo.allsaldo)}}&nbsp;{{allstatitem.itogo.allsaldo}}</span>
+            </p>
+
+        </mat-accordion>
+
+        <google-chart [data]="pieChartDataCredit"></google-chart>
+
+        <google-chart [data]="pieChartDataDebet"></google-chart>
+
+    </md-card-content>
+
+    </div>
+
+
+</md-card>

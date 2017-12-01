@@ -1,0 +1,77 @@
+<md-card class="central-card">
+    <md-card-header>
+        <md-card-title class="form-title"><h4>Расход</h4></md-card-title>
+    </md-card-header>
+
+    <md-card-content>
+        <form #recordForm="ngForm">
+            <p>{{currdate}}</p>
+
+            <p>
+                <md-select placeholder="Тип" class="form-full-width" name="type" [(ngModel)]="data.type" #debetType="ngModel" required>
+                    <md-option *ngFor="let typeitem of types.typesarray" [value]="typeitem.typecode">{{ typeitem.typename }}</md-option>
+                </md-select>
+            </p>
+            <p>
+                <md-input-container class="form-full-width">
+                    <md-hint align="start"><i class="icon-rouble ng-scope"></i></md-hint>
+                    <input mdInput placeholder="Сумма" name="summa" [(ngModel)]="data.summa" #debetSumma="ngModel" (keypress)="validationService._keyPressSumma($event)" required>
+
+
+                </md-input-container>
+            </p>
+            <p>
+                <md-input-container class="form-full-width">
+                    <textarea mdInput class="comment_text" placeholder="Комментарий..." name="debet_commentary" [(ngModel)]="data.commentary" #debetCommentary="ngModel" maxlength="140"></textarea>
+                </md-input-container>
+            </p>
+
+            <p>
+                <button md-raised-button (click)="showDate=!showDate">
+                    Дата отличается от текущей
+                </button>
+            </p>
+
+            <p *ngIf="showDate">
+                <md-input-container class="form-full-width">
+                    <input mdInput placeholder="ммдд" name="date" [(ngModel)]="data.date" #debetDate="ngModel" maxlength="4" minlength="4" (keypress)="validationService._keyPressDate($event)">
+                </md-input-container>
+            </p>
+
+            <input type="hidden" name="currdate" value="{{currdate}}">
+
+            <p style="margin-top:20px;">
+                <button class="button-pay" md-raised-button color="primary" [disabled]="validationService.isDisabled(data.type, data.summa)" (click)="onConfirm(this); recordForm.reset();">Отправить</button>
+            </p>
+        </form>
+    </md-card-content>
+
+
+</md-card>
+
+<md-card class="central-card container">
+    <md-card-header>
+        <md-card-title class="form-title"><h4>Месячная статистика</h4></md-card-title>
+    </md-card-header>
+    <md-card-content class="row">
+
+        <div class="col-xs-12 col-md-4">
+            <p>Дебет</p>
+            <p class="bottom-stat green">+&nbsp;{{stat.monthdebet}}</p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <p>Кредит</p>
+            <p class="bottom-stat red">-&nbsp;{{stat.monthcredit}}</p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <p>Сальдо</p>
+            <p class="bottom-stat {{validationService.getColorClass(stat.monthsaldo)}}">{{validationService.getSign(stat.monthsaldo)}}&nbsp;{{stat.monthsaldo}}</p>
+        </div>
+
+
+    </md-card-content>
+</md-card>
+
+<div id="messages" class="messages-container">
+    <span *ngFor="let itemmessage of messagesService.messages.message; let i = index" id="message_{{i}}" class="{{messagesService.messages.type[i]}}">{{itemmessage}}<a *ngIf="itemmessage" href="javascript:void(0);" class="icon-remove close_message" (click)="messagesService.closeMessage(i)"></a></span>
+</div>

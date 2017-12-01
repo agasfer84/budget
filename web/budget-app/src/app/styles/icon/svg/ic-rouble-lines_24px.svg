@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g transform="matrix(0.86692453,0,0,0.86692453,-14.690872,0.05276313)">
+    <path d="M 28.3453,4.3884518 28.37288,22.779661"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.15350295;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        />
+    <path
+       id="path4142"
+       d="m 28.350739,4.3311151 c 2.053788,0 0.559421,-0.00544 3.453844,-0.00544 2.894424,3e-7 5.240818,2.0087036 5.240818,4.4865647 0,2.4778616 -2.116857,4.4689086 -5.01128,4.4689086 -2.894422,0 -4.889649,-0.0186 -7.497404,-0.0186"
+       style="fill:none;fill-opacity:0.98290597;stroke:#000000;stroke-width:1.15350294;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path4165"
+       d="m 24.519913,16.880973 7.804369,-0.01794"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.15350295;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<md-toolbar color="primary">
+
+  <span>Budget</span>
+  <span class="example-spacer"></span>
+  <button *ngIf="authorized" md-button class="menu_button" [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon>Меню</button>
+
+  <div *ngIf="authorized" class="block_logout">
+  <span>{{auth.user}}</span>
+  <button md-button class="logout_button" (click)="Logout()"><i class="icon-exit ng-scope"></i>Выход</button>
+  </div>
+
+</md-toolbar>
+
+<md-menu #appMenu="mdMenu">
+  <a md-menu-item class="a_menu" routerLink="/debet" routerLinkActive="active" title="Приход">
+    <span class="span_menu">Приход</span>
+  </a>
+  <a md-menu-item class="a_menu" routerLink="/credit" routerLinkActive="active" title="Расход">
+    <span class="span_menu">Расход</span>
+  </a>
+  <a md-menu-item class="a_menu" routerLink="/top" routerLinkActive="active" title="Последние записи">
+    <span class="span_menu">Последние записи</span>
+  </a>
+  <a md-menu-item class="a_menu" routerLink="/stat" routerLinkActive="active" title="Статистика">
+    <span class="span_menu">Статистика</span>
+  </a>
+</md-menu>
+
+<md-card *ngIf="!authorized" class="central-card container">
+  <md-card-header>
+    <md-card-title class="form-title"><h4>Вход</h4></md-card-title>
+  </md-card-header>
+  <md-card-content class="row">
+    <p *ngIf="isChecked" style="color:red;">{{notify}}</p>
+    <mat-progress-spinner *ngIf="isLoading" style="height:70px;" mode="indeterminate"></mat-progress-spinner>
+      <p>
+        <md-input-container class="form-full-width">
+          <md-hint align="start"><i class="icon-user ng-scope"></i></md-hint>
+          <input mdInput placeholder="Логин" name="login" [(ngModel)]="auth.login" #debetSumma="ngModel" required>
+        </md-input-container>
+      </p>
+      <p>
+        <md-input-container class="form-full-width">
+          <md-hint align="start"><i class="icon-authentication-keyalt ng-scope"></i></md-hint>
+          <input mdInput placeholder="Пароль" type="password" name="password" [(ngModel)]="auth.password" #debetSumma="ngModel" required>
+        </md-input-container>
+      </p>
+
+    <p style="margin-top:20px;">
+      <button class="button-pay" color="primary" md-raised-button [disabled]="isDisabled(auth.login, auth.password)" (click)="Login();Submit();">Войти</button>
+    </p>,
+
+  </md-card-content>
+</md-card>
+
+
+
+
+  <router-outlet *ngIf="authorized"></router-outlet>
+
+
+
