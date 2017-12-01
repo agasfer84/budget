@@ -54,7 +54,7 @@ $config = [
             ],
         ],
         'db' => $db,
-        'db10' => YII_ENV_DEV ? $db10 : $db11,
+        'db10' => PHP_OS=="Windows" ? $db10 : $db11,
         'urlManager'=>require(__DIR__.'/_urlManager.php'),
         /*
         'urlManager' => [
