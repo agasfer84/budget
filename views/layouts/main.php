@@ -34,7 +34,6 @@ AppAsset::register($this);
 <?= $content ?>
 <?php $this->endBody() ?>
 
-<div></div>
 </body>
 
 </html>

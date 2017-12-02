@@ -15,7 +15,7 @@ url('/budget-app/src/app/styles/font/raleway/raleway-semibold-webfont.ttf') form
 html, body{height:100%;}
 html{font-family:'raleway', sans-serif;line-height:1.4;font-size:1em;}
 body{font-family:'raleway', sans-serif;margin:auto;font-size:110%;text-align:center;padding: 0 0;  background:rgb(249,249,249); max-width:100%;}
-body :last-child {display:none;}
+.page-content~div{display:none;}
 .page-content{text-align: center;width:50%;margin:auto;}
 @media all and (max-width:1500px){.page-content{width:70%;}
 }
