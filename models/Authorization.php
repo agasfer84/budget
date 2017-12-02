@@ -35,7 +35,7 @@ class Authorization extends ActiveRecord
         $user = false;
         $checkpass = false;
         $user = self::find()->where(["login"=>$model["login"]])->andWhere(["status"=>1])->one();
-        if($user->hash&&$user->hash == $model["hash"]){return true;}
+        if($model["hash"]&&$user->hash&&$user->hash == $model["hash"]){return true;}
         if($user->password){$checkpass = Yii::$app->getSecurity()->validatePassword($model["password"], $user->password);}
         if($checkpass){
             $time = time();
