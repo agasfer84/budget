@@ -46,7 +46,7 @@ export class StatComponent implements OnInit {
         });
         this.httpService.getData('/budget/allstat').subscribe((resp: Response) => {
             this.stat.allstatarr=resp.json();
-            console.dir(this.stat.allstatarr);
+            //console.dir(this.stat.allstatarr);
 
             var arr_credit=this.stat.allstatarr[0]["credit"];
             var arr_debet=this.stat.allstatarr[0]["debet"];

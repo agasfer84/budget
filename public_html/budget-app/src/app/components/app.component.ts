@@ -43,6 +43,8 @@ export class AppComponent implements OnInit {
 
     this.Login();
 
+    //console.log(this.authorized);
+
   }
 
   isDisabled(login, password){
@@ -54,8 +56,9 @@ export class AppComponent implements OnInit {
     this.notify="";
     this.isLoading = true;
     const body = JSON.stringify(this.auth);
-    this.httpService.postAuth(body).subscribe((data) => {this.authorized=data;
-      //console.log(data);
+    this.httpService.postAuth(body).subscribe((data) => {
+      this.authorized=data;
+      console.log(data);
       this.isLoading = false;
       if (this.authorized){
         this.auth.user = this.auth.login;
@@ -77,7 +80,7 @@ export class AppComponent implements OnInit {
   Submit(){return this.isChecked = true;}
 
   Logout(){
-    document.cookie = "hash=; path=/; expires=-1";
+    document.cookie = "hash=0; path=/; expires=-1";
     document.cookie = "user=; path=/; expires=-1";
     return this.authorized=false;
   }
