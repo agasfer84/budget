@@ -31,21 +31,22 @@ export class DebetComponent implements OnInit {
     messages = new Messages();
     currdate:string;
     done:boolean = false;
+    showDate:boolean = false;
 
     stat = new Stat();
 
 
 
 
-    constructor(private httpService: HttpService, private validationService: ValidationService, private messagesService: MessagesService){}
+    constructor(public httpService: HttpService, public validationService: ValidationService, public messagesService: MessagesService){}
 
     ngOnInit(){
-
+        this.data.section="debet";
         this.httpService.getDate().subscribe((resp: Response) => {this.currdate=resp.json();});
-        this.httpService.getTypes("debet").subscribe((resp: Response) => {this.types.typesarray=resp.json();
+        this.httpService.getTypes(this.data.section).subscribe((resp: Response) => {this.types.typesarray=resp.json();
             //console.log(this.types.typesarray);
         });
-        this.data.section="debet";
+
 
         this.httpService.getBottomstat().subscribe((resp: Response) => {
             this.stat=resp.json();
@@ -57,7 +58,7 @@ export class DebetComponent implements OnInit {
 
 
 
-    onConfirm(data: Data) {this.httpService.postData(this.data).subscribe((mess) => {
+    onConfirm() {this.httpService.postData(this.data).subscribe((mess) => {
 
             this.messages.messarray=mess;
         //console.log(this.messages.messarray);

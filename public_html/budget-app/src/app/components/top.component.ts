@@ -35,7 +35,7 @@ export class TopComponent implements OnInit {
     remove_id:number;
 
 
-    constructor(private httpService: HttpService, private validationService: ValidationService, private messagesService: MessagesService) {
+    constructor(public httpService: HttpService, public validationService: ValidationService, public messagesService: MessagesService) {
     }
 
     ngOnInit() {

@@ -36,7 +36,7 @@ export class StatComponent implements OnInit {
     pieChartDataCredit:any;
     pieChartDataDebet:any;
 
-    constructor(private httpService: HttpService, private validationService: ValidationService, private messagesService: MessagesService){}
+    constructor(public httpService: HttpService, public validationService: ValidationService, public messagesService: MessagesService){}
 
     ngOnInit(){
         this.httpService.getMonth().subscribe((resp: Response) => {this.currdate=resp.json();});

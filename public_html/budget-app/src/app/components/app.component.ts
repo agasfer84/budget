@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   notify:string;
   isLoading: boolean = false;
   isChecked: boolean = false;
-  constructor(private httpService: HttpService, private validationService: ValidationService){}
+  constructor(public httpService: HttpService, public validationService: ValidationService){}
 
   ngOnInit(){
 

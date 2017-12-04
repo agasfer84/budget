@@ -40,7 +40,7 @@
             <input type="hidden" name="currdate" value="{{currdate}}">
 
             <p style="margin-top:20px;">
-            <button class="button-pay" color="primary" md-raised-button [disabled]="validationService.isDisabled(data.type, data.summa)" (click)="onConfirm(this); recordForm.reset();">Отправить</button>
+            <button class="button-pay" color="primary" md-raised-button [disabled]="validationService.isDisabled(data.type, data.summa)" (click)="onConfirm(); recordForm.reset();">Отправить</button>
             </p>
 
         </form>

@@ -31,23 +31,24 @@ export class CreditComponent implements OnInit {
     messages = new Messages();
     currdate: string;
     done: boolean = false;
+    showDate:boolean = false;
 
     stat = new Stat();
 
 
-    constructor(private httpService: HttpService, private validationService: ValidationService, private messagesService: MessagesService) {
+    constructor(public httpService: HttpService, public validationService: ValidationService, public messagesService: MessagesService) {
     }
 
     ngOnInit() {
-
+        this.data.section = "credit";
         this.httpService.getDate().subscribe((resp: Response) => {
             this.currdate = resp.json();
         });
-        this.httpService.getTypes("credit").subscribe((resp: Response) => {
+        this.httpService.getTypes(this.data.section).subscribe((resp: Response) => {
             this.types.typesarray = resp.json();
             //console.log(this.types.typesarray);
         });
-        this.data.section = "credit";
+
 
         this.httpService.getBottomstat().subscribe((resp: Response) => {
             this.stat = resp.json();
@@ -58,7 +59,7 @@ export class CreditComponent implements OnInit {
     }
 
 
-    onConfirm(data: Data) {
+    onConfirm() {
         this.httpService.postData(this.data).subscribe((mess) => {
 
                 this.messages.messarray = mess;
