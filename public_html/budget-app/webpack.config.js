@@ -44,7 +44,7 @@ module.exports = {
     {
       test: /\.css$/,
       exclude: path.resolve('src', 'app'),
-      loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+      loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
     },
     {
       test: /\.css$/,
@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
 
     new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        /angular(\\|\/)core(\\|\/)@angular/,
       path.resolve('./src'), // каталог с исходными файлами
       {} // карта маршрутов
     ),
@@ -71,15 +71,24 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),//.[hash]
     new webpack.NoEmitOnErrorsPlugin(),
      
-    new webpack.optimize.UglifyJsPlugin({ 
+    new webpack.optimize.UglifyJsPlugin({
+    beautify: false, 
       mangle: {
+        screw_ie8: true,
         keep_fnames: true
-      }
+      },
+    compress: {
+    screw_ie8: true,
+    warnings: false,
+    drop_console: true,
+    unsafe: true
+    },
+    comments: false,
     }),
      
     new webpack.LoaderOptionsPlugin({
       htmlLoader: {
-        minimize: false
+        minimize: true
       }
     })
   ]
