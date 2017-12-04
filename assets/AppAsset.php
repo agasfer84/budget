@@ -23,11 +23,16 @@ class AppAsset extends AssetBundle
         'budget-app/node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
         'budget-app/src/app/styles/whhg-font/css/whhg.css',
         'budget-app/src/app/styles/app.component.css',
+        'budget-app/dist/styles.bundle.css',
     ];
     public $js = [
-        'budget-app/dist/polyfills.js',
-        'budget-app/dist/vendor.js',
-        'budget-app/dist/app.js',
+        //'budget-app/dist/polyfills.js',
+        //'budget-app/dist/vendor.js',
+        //'budget-app/dist/app.js',
+        'budget-app/dist/inline.bundle.js',
+        'budget-app/dist/polyfills.bundle.js',
+        'budget-app/dist/vendor.bundle.js',
+        'budget-app/dist/main.bundle.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
