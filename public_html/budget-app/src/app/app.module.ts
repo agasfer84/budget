@@ -21,12 +21,12 @@ import { TopComponent } from './components/top.component';
 // определение маршрутов
 const appRoutes: Routes =[
 
-  { path: '', redirectTo: 'debet', pathMatch: 'full'},
+  { path: '', redirectTo: 'credit', pathMatch: 'full'},
   { path: 'debet', component: DebetComponent},
   { path: 'credit', component: CreditComponent},
   { path: 'stat', component: StatComponent},
   { path: 'top', component: TopComponent},
-  { path: '**', redirectTo: 'debet', pathMatch: 'full' }
+  { path: '**', redirectTo: 'credit', pathMatch: 'full' }
 
 ];
 

@@ -19,7 +19,7 @@ export class MessagesService {
 
             self.clearMessages();
 
-        }, 10000);
+        }, 5000);
 
     }
 
