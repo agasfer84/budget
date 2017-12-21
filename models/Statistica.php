@@ -63,7 +63,8 @@ class Statistica extends \yii\db\ActiveRecord
         if(!$alldebet){$alldebet=0;}
         $allcredit = self::find()->where(['section' => 'credit'])->sum('summa');
         if(!$allcredit){$allcredit=0;}
-        $allsaldo  = $alldebet-$allcredit;
+        $allsaldo = $alldebet-$allcredit;
+        $allsaldo = round($allsaldo, 2);
         $botomitog = ["alldebet" => $alldebet, "allcredit" => $allcredit, "allsaldo" => $allsaldo];
         return $botomitog;
 
