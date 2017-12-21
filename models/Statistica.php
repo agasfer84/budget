@@ -50,6 +50,7 @@ class Statistica extends \yii\db\ActiveRecord
         $monthcredit = self::find()->where(['section' => 'credit'])->andWhere(['=',"YEAR(date)", $year])->andWhere(['=',"MONTH(date)", $month])->sum('summa');
         if(!$monthcredit){$monthcredit=0;}
         $monthsaldo  = $monthdebet-$monthcredit;
+        $monthsaldo  = round($monthsaldo, 2);
         $botomstatarr = ["monthdebet" => $monthdebet, "monthcredit" => $monthcredit, "monthsaldo" => $monthsaldo];
         return $botomstatarr;
 
