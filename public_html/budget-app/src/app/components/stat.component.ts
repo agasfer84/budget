@@ -43,15 +43,15 @@ export class StatComponent implements OnInit {
         this.httpService.getMonth().subscribe((resp: Response) => {this.currdate=resp.json();});
         this.httpService.getData('/budget/stat').subscribe((resp: Response) => {
             this.stat.monthstatarr=resp.json();
-            //console.log(this.stat.monthstatarr);
+            console.log(this.stat.monthstatarr);
 
-            var arr_month = this.stat.monthstatarr[0]["itogo"];
+            var arr_month = this.stat.monthstatarr;
             var newarr_month=[];
 
-            arr_month.forEach(function(item, i, arr_month) {
+            /*arr_month.forEach(function(item, i, arr_month) {
                 newarr_month[0]=['monthdebet','monthcredit', 'monthsaldo'];
                 newarr_month[i+1]=[Number(item.monthdebet), Number(item.monthcredit), Number(item.monthsaldo)];
-            });
+            });*/
 
             this.columnChartDataMonth =  {
                 chartType: 'ColumnChart',
