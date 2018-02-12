@@ -35,6 +35,7 @@ export class StatComponent implements OnInit {
     showall:boolean = false;
     pieChartDataCredit:any;
     pieChartDataDebet:any;
+    columnChartDataMonth:any;
 
     constructor(public httpService: HttpService, public validationService: ValidationService, public messagesService: MessagesService){}
 
@@ -43,6 +44,28 @@ export class StatComponent implements OnInit {
         this.httpService.getData('/budget/stat').subscribe((resp: Response) => {
             this.stat.monthstatarr=resp.json();
             //console.log(this.stat.monthstatarr);
+
+            var arr_month = this.stat.monthstatarr[0]["itogo"];
+            var newarr_month=[];
+
+            arr_month.forEach(function(item, i, arr_month) {
+                newarr_month[0]=['monthdebet','monthcredit', 'monthsaldo'];
+                newarr_month[i+1]=[Number(item.monthdebet), Number(item.monthcredit), Number(item.monthsaldo)];
+            });
+
+            this.columnChartDataMonth =  {
+                chartType: 'ColumnChart',
+                dataTable: newarr_month,
+                options: {
+                    title: 'columnChart',
+                    animation:{
+                        duration: 1000,
+                        easing: 'out',
+                        startup: true
+                    }
+                }
+            };
+
         });
         this.httpService.getData('/budget/allstat').subscribe((resp: Response) => {
             this.stat.allstatarr=resp.json();
@@ -53,6 +76,8 @@ export class StatComponent implements OnInit {
             var newarr_credit=[];
             var newarr_debet=[];
 
+
+
             arr_credit.forEach(function(item, i, arr_credit) {
                 newarr_credit[0]=['typename','sum'];
                 newarr_credit[i+1]=[item.typename,Number(item.sum)];
@@ -61,6 +86,7 @@ export class StatComponent implements OnInit {
                 newarr_debet[0]=['typename','sum'];
                 newarr_debet[i+1]=[item.typename,Number(item.sum)];
             });
+
             //console.log(newarr_credit);
             this.pieChartDataCredit =  {
                 chartType: 'PieChart',
@@ -76,6 +102,8 @@ export class StatComponent implements OnInit {
                     is3D: true,
                 },
             };
+
+
 
         });
 
