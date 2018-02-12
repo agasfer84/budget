@@ -43,13 +43,14 @@ export class StatComponent implements OnInit {
         this.httpService.getMonth().subscribe((resp: Response) => {this.currdate=resp.json();});
         this.httpService.getData('/budget/stat').subscribe((resp: Response) => {
             this.stat.monthstatarr=resp.json();
-            console.log(this.stat.monthstatarr);
+            //console.log(this.stat.monthstatarr);
 
             var arr_month = this.stat.monthstatarr;
+            arr_month = arr_month.reverse();
             var newarr_month=[];
 
             arr_month.forEach(function(item, i, arr_month) {
-                newarr_month[0]=['date','monthdebet','monthcredit', 'monthsaldo'];
+                newarr_month[0]=['Месяц','Приход','Расход', 'Сальдо'];
                 newarr_month[i+1]=[item["date"], Number(item["itogo"].monthdebet), Number(item["itogo"].monthcredit), Number(item["itogo"].monthsaldo)];
             });
 
@@ -57,7 +58,7 @@ export class StatComponent implements OnInit {
                 chartType: 'ColumnChart',
                 dataTable: newarr_month,
                 options: {
-                    title: 'columnChart',
+                    title: 'Помесячная статистика',
                     animation:{
                         duration: 1000,
                         easing: 'out',
