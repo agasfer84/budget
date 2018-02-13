@@ -46,10 +46,10 @@ export class StatComponent implements OnInit {
             //console.log(this.stat.monthstatarr);
 
             var arr_month = this.stat.monthstatarr;
-            arr_month = arr_month.reverse();
+            var arr_month_reverse = arr_month.reverse();
             var newarr_month=[];
 
-            arr_month.forEach(function(item, i, arr_month) {
+            arr_month_reverse.forEach(function(item, i, arr_month_reverse) {
                 newarr_month[0]=['Месяц','Приход','Расход', 'Сальдо'];
                 newarr_month[i+1]=[item["date"], Number(item["itogo"].monthdebet), Number(item["itogo"].monthcredit), Number(item["itogo"].monthsaldo)];
             });
