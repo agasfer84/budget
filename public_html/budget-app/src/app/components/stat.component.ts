@@ -49,11 +49,12 @@ export class StatComponent implements OnInit {
             var newarr_month=[];
 
             arr_month.forEach(function(item, i, arr_month) {
-                newarr_month[0]=['Месяц','Приход','Расход', 'Сальдо'];
+                //newarr_month[0]=['Месяц','Приход','Расход', 'Сальдо'];
                 newarr_month[i+1]=[item["date"], Number(item["itogo"].monthdebet), Number(item["itogo"].monthcredit), Number(item["itogo"].monthsaldo)];
             });
 
             var newarr_month2 = newarr_month.reverse();
+            newarr_month2[0] = ['Месяц','Приход','Расход', 'Сальдо'];
 
             this.columnChartDataMonth =  {
                 chartType: 'ColumnChart',
