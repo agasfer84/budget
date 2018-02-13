@@ -45,21 +45,20 @@ export class StatComponent implements OnInit {
             this.stat.monthstatarr=resp.json();
             //console.log(this.stat.monthstatarr);
 
-            var arr_month = this.stat.monthstatarr;
+            var arr_month = resp.json();
+            arr_month = arr_month.reverse();
             var newarr_month=[];
 
             arr_month.forEach(function(item, i, arr_month) {
-                //newarr_month[0]=['Месяц','Приход','Расход', 'Сальдо'];
+                newarr_month[0]=['Месяц','Приход','Расход', 'Сальдо'];
                 newarr_month[i+1]=[item["date"], Number(item["itogo"].monthdebet), Number(item["itogo"].monthcredit), Number(item["itogo"].monthsaldo)];
             });
 
-            var newarr_month2 = newarr_month.reverse();
-            newarr_month2[0] = ['Месяц','Приход','Расход', 'Сальдо'];
 
-            console.log(newarr_month2);
+            //console.log(newarr_month);
             this.columnChartDataMonth =  {
                 chartType: 'ColumnChart',
-                dataTable: newarr_month2,
+                dataTable: newarr_month,
                 options: {
                     title: 'Помесячная статистика',
                     animation:{
