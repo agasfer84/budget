@@ -53,11 +53,11 @@ export class StatComponent implements OnInit {
                 newarr_month[i+1]=[item["date"], Number(item["itogo"].monthdebet), Number(item["itogo"].monthcredit), Number(item["itogo"].monthsaldo)];
             });
 
-            newarr_month = newarr_month.reverse();
+            var newarr_month2 = newarr_month.reverse();
 
             this.columnChartDataMonth =  {
                 chartType: 'ColumnChart',
-                dataTable: newarr_month,
+                dataTable: newarr_month2,
                 options: {
                     title: 'Помесячная статистика',
                     animation:{
