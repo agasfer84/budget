@@ -56,6 +56,7 @@ export class StatComponent implements OnInit {
             var newarr_month2 = newarr_month.reverse();
             newarr_month2[0] = ['Месяц','Приход','Расход', 'Сальдо'];
 
+            console.log(newarr_month2);
             this.columnChartDataMonth =  {
                 chartType: 'ColumnChart',
                 dataTable: newarr_month2,
