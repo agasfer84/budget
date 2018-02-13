@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
     const body = JSON.stringify(this.auth);
     this.httpService.postAuth(body).subscribe((data) => {
       this.authorized=data;
-      console.log(data);
+      //console.log(data);
       this.isLoading = false;
       if (this.authorized){
         this.auth.user = this.auth.login;
