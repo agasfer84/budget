@@ -28,15 +28,15 @@ class DefaultController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'login'],
+                'only' => ['auth', 'getdate', 'getmonth', 'gettypes', 'getbottomstat', 'recorddata', 'remove', 'stat', 'allstat', 'top', 'test'],
                 'rules' => [
                     [
-                        'actions' => ['login'],
+                        'actions' => ['auth'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        'roles' => ['@','?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['getdate', 'getmonth', 'gettypes', 'getbottomstat', 'recorddata', 'remove', 'stat', 'allstat', 'top', 'test'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -87,7 +87,8 @@ class DefaultController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         if(Yii::$app->request->method === 'POST') {
             $model = Yii::$app->getRequest()->getBodyParams();
-            return Authorization::getAuth($model);
+            $Authorization = new Authorization();
+            return $Authorization->getAuth($model);
         }
         return false;
     }
@@ -185,8 +186,9 @@ class DefaultController extends Controller
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
 
-        $Statistica = new Statistica();
+        print_r(PHP_OS);
+        //$Statistica = new Statistica();
         //return DateHelper::nowDateYm();
-        return $Statistica->getPeriods();
+        //return $Statistica->getPeriods();
     }
 }

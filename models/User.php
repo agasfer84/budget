@@ -5,12 +5,16 @@ namespace app\models;
 class User extends \yii\base\Object implements \yii\web\IdentityInterface
 {
     public $id;
-    public $username;
+    //public $username;
     public $password;
     public $authKey;
     public $accessToken;
+    public $status;
+    public $login;
+    public $hash;
+    public $comment;
 
-    private static $users = [
+    /*private static $users = [
         '100' => [
             'id' => '100',
             'username' => 'admin',
@@ -25,15 +29,24 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             'authKey' => 'test101key',
             'accessToken' => '101-token',
         ],
-    ];
+    ];*/
 
+    private static function users()
+    {
+        return Authorization::getUsers();
+    }
+
+    private static function user($id)
+    {
+        return Authorization::getUserById($id);
+    }
 
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return self::user($id) ? new static(self::user($id)) : null;
     }
 
     /**
@@ -41,7 +54,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
+        foreach (self::users() as $user) {
             if ($user['accessToken'] === $token) {
                 return new static($user);
             }
@@ -58,14 +71,15 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
+        foreach (self::users() as $user) {
+            if (strcasecmp($user['login'], $username) === 0) {
                 return new static($user);
             }
         }
 
         return null;
     }
+
 
     /**
      * @inheritdoc
