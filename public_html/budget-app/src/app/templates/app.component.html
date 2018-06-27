@@ -31,6 +31,7 @@
     <md-card-title class="form-title"><h4>Вход</h4></md-card-title>
   </md-card-header>
   <md-card-content class="row">
+    <form>
     <p *ngIf="isChecked" style="color:red;">{{notify}}</p>
     <mat-progress-spinner *ngIf="isLoading" style="height:70px;" mode="indeterminate"></mat-progress-spinner>
       <p>
@@ -47,9 +48,9 @@
       </p>
 
     <p style="margin-top:20px;">
-      <button class="button-pay" color="primary" md-raised-button [disabled]="isDisabled(auth.login, auth.password)" (click)="Login();Submit();">Войти</button>
+      <button class="button-pay" color="primary" md-raised-button [disabled]="isDisabled(auth.login, auth.password)" (submit)="Login();Submit();" (click)="Login();Submit();">Войти</button>
     </p>,
-
+    </form>
   </md-card-content>
 </md-card>
 
